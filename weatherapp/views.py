@@ -7,7 +7,7 @@ from django.contrib import messages
 from weatherapp.models import City
 
 
-def home(request):
+def base(request):
     API_key = config('API_KEY')
     u_city = request.GET.get('name')  #cityName model den geldi
     # print(u_city)
@@ -25,7 +25,7 @@ def home(request):
         else:
             messages.error(request, 'There is no city')
 
-        return redirect('home')
+        return redirect('base')
     # pprint(cityInfo)
 
     # pprint(cityInfo['name'])
@@ -56,10 +56,10 @@ def home(request):
     context = {
         'all_city_data':all_city_data,
     }
-    return render(request, 'weatherapp/home.html',context)
+    return render(request, 'weatherapp/base.html',context)
 
 def delete_city(request,id):
     city = get_object_or_404(City,id=id)
     city.delete()
     messages.success(request, 'city deleted')
-    return redirect('home')
+    return redirect('base')

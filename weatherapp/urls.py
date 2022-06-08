@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import home ,delete_city
+from .views import base ,delete_city
 
 urlpatterns = [
-    path('', home, name="home"),
+    path('', base, name="base"),
     path('delete/<int:id>', delete_city, name="delete"),
 ]

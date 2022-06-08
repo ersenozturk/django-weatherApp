@@ -1,0 +1,83 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'weatherapp/main.css' %}">
+
+    <title>Blog Project</title>
+  </head>
+  <body>
+    <h1 style="text-align: center;">Weather App</h1>
+
+
+      <div class="container">
+        {% if messages %}
+        {% for message in messages %}
+
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <div>
+
+      <form action="" method="get">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Search city</label>
+    <input type="text" name="name" id="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter city">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <input style="display:block" type="submit" value="Look at City Weather">
+
+
+    
+    </form> 
+    
+    
+    
+
+
+    <div class="row mt-5" >
+      {% for city in all_city_data %}
+        <div class="col-4">
+    
+            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; height: 25rem; ">
+                <img src="http://openweathermap.org/img/wn/{{ city.icon }}.png" class="card-img-top" alt="post_image" style="width:15rem; height: 11rem; align-self:center;">
+                <hr>
+                <div class="card-body">
+                    <h5 class="card-title">{{city.city}}</a></h5>
+                    <p class="card-text">{{city.desc}}</p>
+                    <p class="card-text">{{city.temp}} <span>&#8451</span> </p>
+                </div>
+  
+              <button type="button" class="btn btn-info">
+                <a href="{% url 'delete' city.city.id %}">Delete</a>
+              </button>
+
+            </div>
+        </div>
+    
+        {% endfor %}
+    </div>
+
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  
+  </body>
+</html>
