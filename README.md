@@ -2,7 +2,7 @@
 
 - Clone the template project to your local:
 ```git
-git clone https://github.com/bluehackrafestefano/WeatherAppStarterTemplate.git
+git clone https://github.com/ersenozturk/django-weatherApp.git
 ```
 
 - Use the folder created after clone as the project main directory, cd to this new directory.
