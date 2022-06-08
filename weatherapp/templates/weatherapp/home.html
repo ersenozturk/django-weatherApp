@@ -1,0 +1,28 @@
+<h1>Weather app</h1>
+
+
+{% if messages %}
+    {% for message in messages  %}
+        {{message}}
+    {% endfor %}    
+{% endif %}
+    
+<form action="" method="get">
+    <input type="text" name="name" id="name">
+
+    <input type="submit" value="Look at City Weather">
+</form> 
+
+
+{% for city in all_city_data %}
+
+<p>{{city.city}}</p> 
+<p>{{city.temp}} <span>&#8451</span> </p> 
+<p>{{city.desc}}</p> 
+<img src="http://openweathermap.org/img/wn/{{ city.icon }}.png" alt="Icon">
+<button>
+    <a href="{% url 'delete' city.city.id %}">Delete</a>
+</button>
+<hr>
+
+{% endfor %}
